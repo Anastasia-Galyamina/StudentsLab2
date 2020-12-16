@@ -52,6 +52,20 @@ namespace StudentsLab
                 context.SaveChanges();
             }
         }
+        public void ChangeScholarShip(Student model)
+        {
+            using (var context = new Database())
+            {
+                Student element = context.Students.FirstOrDefault(rec => rec.Id ==
+                model.Id);
+                if (element == null)
+                {
+                    throw new Exception("Студент не найден");
+                }
+                element.Scholarship = model.Scholarship;
+                context.SaveChanges();
+            }
+        }
 
         public void Delete(Student model)
         {

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeCoursePlagin", "ChangeCoursePlagin\ChangeCoursePlagin.csproj", "{DF163C48-5209-4223-8EBC-22B188FAB4AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeScholarshipPlugin", "ChangeScholarshipPlugin\ChangeScholarshipPlugin.csproj", "{7F351FB1-63EC-4C87-B678-A8A922C238CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateReference", "CreateReference\CreateReference.csproj", "{8BE9AFE6-B930-483C-A458-1D00A24D0194}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{DF163C48-5209-4223-8EBC-22B188FAB4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF163C48-5209-4223-8EBC-22B188FAB4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF163C48-5209-4223-8EBC-22B188FAB4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F351FB1-63EC-4C87-B678-A8A922C238CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F351FB1-63EC-4C87-B678-A8A922C238CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F351FB1-63EC-4C87-B678-A8A922C238CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F351FB1-63EC-4C87-B678-A8A922C238CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BE9AFE6-B930-483C-A458-1D00A24D0194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE9AFE6-B930-483C-A458-1D00A24D0194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BE9AFE6-B930-483C-A458-1D00A24D0194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE9AFE6-B930-483C-A458-1D00A24D0194}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -124,15 +124,9 @@ namespace StudentsLab
             foreach (var elem in list)
             {
                 TableRow rows = new TableRow();
-                //for (int i = 0; i < property.Length; i++)
-               // {
-                   // TableCell cells = new TableCell();
-                   // Paragraph par = new Paragraph();
-
-                    rows.Append(new TableCell(new Paragraph(new Run(new Text(elem.GetType().GetProperty("FIO").GetValue(elem).ToString())))));
-                    rows.Append(new TableCell(new Paragraph(new Run(new Text(elem.GetType().GetProperty("Year").GetValue(elem).ToString())))));                
-                    //rows.Append(cells);
-              //  }
+                rows.Append(new TableCell(new Paragraph(new Run(new Text(elem.GetType().GetProperty("FIO").GetValue(elem).ToString())))));
+                rows.Append(new TableCell(new Paragraph(new Run(new Text(elem.GetType().GetProperty("Year").GetValue(elem).ToString())))));                
+                    
                 table.Append(rows);
             }
         }
@@ -192,9 +186,35 @@ namespace StudentsLab
                 Table table = new Table();
                 PropertyTable(table);
                 CreateTable(table, list, names);
-
-               // MergeCells(table);
+              
                 mainPart.Document.Body.Append(table);
+                mainPart.Document.Save();
+            }
+        }
+
+        public void SaveReference<T>(string fileName, T sth)
+        {
+            if (File.Exists(fileName) == true)
+            {
+                File.Delete(fileName);
+            }
+
+            using (WordprocessingDocument wordDocument = WordprocessingDocument.Create
+                (fileName, WordprocessingDocumentType.Document))
+            {
+                MainDocumentPart mainPart = wordDocument.AddMainDocumentPart();
+                mainPart.Document = new Document();
+                Body body = mainPart.Document.AppendChild(new Body());                                       
+
+                var properties = sth.GetType().GetProperties();
+
+                foreach(var property in properties)
+                {
+                    string str = property.Name + ": " + sth.GetType().GetProperty(property.Name).GetValue(sth).ToString();
+                    body.AppendChild((new Paragraph(new Run(new Text(str)))));    
+                    
+                }
+             
                 mainPart.Document.Save();
             }
         }
