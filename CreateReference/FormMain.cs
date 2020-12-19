@@ -1,5 +1,7 @@
-﻿using StudentsLab;
+﻿using Microsoft.Reporting.WinForms;
+using StudentsLab;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CreateReference
@@ -30,36 +32,20 @@ namespace CreateReference
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-           LoadData();           
+           LoadData();
+           
         }
 
         private void buttonEditStudent_Click(object sender, EventArgs e)
-        {           
-
-
-            try
-            {
-                var view = logic.Read(new Student { Id = controlTree.GetSelectedId() })?[0];
-                MessageBox.Show("Вы хотите сформировать справку по студенту " + view.FIO + "?", "Подтвердите действие", MessageBoxButtons.YesNo);
-                ComponentWord comp = new ComponentWord();
-                using (var context = new Database())
-                {
-                    using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
-                    {
-                        if (dialog.ShowDialog() == DialogResult.OK)
-                        {                            
-                            comp.SaveReference<Student>(dialog.FileName, view);
-                            MessageBox.Show("Сохранение прошло успешно");
-                            Close();
-                        }
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("Не удалось сохранить отчет " + ex.Message);
-            }
+        {
+            reportViewer.RefreshReport();
+            StudentLogic logic = new StudentLogic();
+            Student st = logic.FindStudent(controlTree.GetSelectedId());
+            ReportParameter repPar = new ReportParameter("Student", "ФИО: " + st.FIO + " Год: " + st.Year.ToString() + " Стипендия: " + st.Scholarship.ToString());
+            
+            reportViewer.LocalReport.SetParameters(repPar);   
+            reportViewer.RefreshReport();      
+            
         }
 
     }

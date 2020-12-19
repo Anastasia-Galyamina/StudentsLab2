@@ -38,6 +38,23 @@ namespace StudentsLab
                 context.SaveChanges();
             }
         }
+
+        public Student FindStudent(int Id)
+        {            
+            using (var context = new Database())
+            {
+                Student element = context.Students.FirstOrDefault(rec => rec.Id ==
+                Id);
+                if (element == null)
+                {
+                    throw new Exception("Студент не найден");
+                }                
+                context.SaveChanges(); 
+                
+                return element;
+            }            
+        }
+
         public void ChangeCourse(Student model)
         {
             using (var context = new Database())
@@ -66,6 +83,8 @@ namespace StudentsLab
                 context.SaveChanges();
             }
         }
+
+
 
         public void Delete(Student model)
         {
